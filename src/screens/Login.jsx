@@ -1,14 +1,13 @@
 import { SafeAreaView, View, StyleSheet } from "react-native";
 import Input from "../components/Input";
 import Submit from "../components/Submit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Login = ({navigation}) => {
-    const [userInput, setUserInput] = useState("")
-    const [passwordInput, setPasswordInput] = useState("")
+    const [userInput, setUserInput] = useState()
+    const [passwordInput, setPasswordInput] = useState()
     const [showMessageUser, setShowMessageUser] = useState(false)
     const [showMessagePassword, setShowMessagePassword] = useState(false)
-
 
     const changeUser = (text) => {
         setUserInput(text)

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import BtnPages from "../components/BtnPages";
 
-const Home = () => {
+const Home = ({navigation}) => {
     const [data, setdata] = useState()
     const [numPage, setNumPage] = useState(0)
 
@@ -17,6 +17,10 @@ const Home = () => {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const details = (card) => {
+        navigation.navigate('Details', card)
     }
 
     useEffect(() => {
@@ -34,9 +38,10 @@ const Home = () => {
                 name={item.name}
                 type={item.type}
                 image={item.card_images[0].image_url}
+                onPress={() => details(item)}
             />
         </View>
-    );
+    )
 
     const Pagination = () => {
         return (
