@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Image, StyleSheet, Text, View } from "react-native";
+import Btn from './Btn';
 
 const Card = ({name, type, image, onPress}) => {
     return (
@@ -19,7 +20,7 @@ const Card = ({name, type, image, onPress}) => {
                         source={{uri: image}}
                     />
                 </View>
-                <Button title="Exibir Detalhes" color='#41999c' onPress={onPress} />
+                <Btn title="Exibir Detalhes" onPress={onPress} />
             </View>
         </View>
     );
@@ -34,10 +35,12 @@ const Styles = StyleSheet.create({
         backgroundColor: '#184854'
     },
     textContainer: {
+        width: 275,
         borderWidth: 2,
         borderColor: '#41999c',
-        borderRadius: 4,
+        borderRadius: 8,
         alignItems: 'center',
+        justifyContent: 'center',
         marginBottom: 4,
         padding: 8,
     },
@@ -49,7 +52,8 @@ const Styles = StyleSheet.create({
     imageContainer: {
         borderWidth: 2,
         borderColor: '#41999c',
-        marginBottom: 16
+        marginBottom: 16,
+        alignItems: 'center',
     },
     image: {
         height: 400,

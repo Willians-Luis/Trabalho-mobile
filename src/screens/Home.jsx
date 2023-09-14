@@ -1,14 +1,14 @@
+import { useEffect, useState } from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import axios from "axios"
-import { useEffect, useState } from "react";
 import Card from "../components/Card";
-import BtnPages from "../components/BtnPages";
+import Pagination from "../components/Pagination";
 
 const Home = ({navigation}) => {
     const [data, setdata] = useState()
     const [numPage, setNumPage] = useState(0)
 
-    const fetchApi = async () => {
+    const fetchCards = async () => {
         try {
             const response = await axios.get(
                 `https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=${numPage * 10}`
@@ -24,11 +24,11 @@ const Home = ({navigation}) => {
     }
 
     useEffect(() => {
-        fetchApi()
+        fetchCards()
     }, [])
 
     useEffect(() => {
-        fetchApi()
+        fetchCards()
     }, [numPage])
 
 
@@ -43,34 +43,6 @@ const Home = ({navigation}) => {
         </View>
     )
 
-    const Pagination = () => {
-        return (
-            <View style={styles.pagination}>
-                <BtnPages 
-                    title={` 1 `}  
-                    btnStatus={numPage <= 0 ? false : true} 
-                    onPress={() => {setNumPage(0)}}
-                />
-                <BtnPages 
-                    title="<< " 
-                    btnStatus={numPage <= 0 ? false : true}
-                    onPress={() => {if(numPage > 0) setNumPage(numPage - 1)}}  
-                />
-                <BtnPages title={` Page: ${numPage + 1} `}/>
-                <BtnPages 
-                    title=" >>"
-                    btnStatus={true}
-                    onPress={() => {setNumPage(numPage + 1)}}
-                />
-                <BtnPages 
-                    title=">>10"
-                    btnStatus={true}
-                    onPress={() => {setNumPage(numPage + 10)}}
-                />
-            </View>
-        )
-    }
-
     return (
         <SafeAreaView style={styles.container}>
             {data?.length > 0 ?
@@ -78,7 +50,7 @@ const Home = ({navigation}) => {
                     <FlatList
                         data={data}
                         renderItem={({item}) => <Item item={item} />}
-                        ListFooterComponent={<Pagination />}
+                        ListFooterComponent={<Pagination numPage={numPage} setNumPage={setNumPage} />}
                     />
                 </View>
                 : <View><Text>Carregando...</Text></View>  
@@ -98,13 +70,6 @@ const styles = StyleSheet.create({
         padding: 4,
         justifyContent: "center",
         alignItems: "center",
-    },
-    pagination: {
-        height: 48,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        gap: 8,
-        marginTop: 8
     }
 })
 export default Home;

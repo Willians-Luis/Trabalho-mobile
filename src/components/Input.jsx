@@ -1,12 +1,13 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
-const Input = ({onChangeText, placeholder, senha = false, showMessage = false, message}) => {
+const Input = ({onChangeText, value, placeholder, senha = false, showMessage = false, message}) => {
 
     return (
         <View>
             <TextInput
                 style={style.container}
                 onChangeText={onChangeText}
+                value={value}
                 placeholder={placeholder}
                 placeholderTextColor='#fff'
                 secureTextEntry = {senha}
