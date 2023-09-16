@@ -3,15 +3,15 @@ import Input from "../components/Input";
 import Submit from "../components/Submit";
 import { useState } from "react";
 
-const Login = ({navigation}) => {
-    const [userValue, setUserValue] = useState()
-    const [passwordValue, setPasswordValue] = useState()
+const Login = ({ navigation }) => {
+    const [userValue, setUserValue] = useState("")
+    const [passwordValue, setPasswordValue] = useState("")
     const [showMessageUser, setShowMessageUser] = useState(false)
     const [showMessagePassword, setShowMessagePassword] = useState(false)
 
     const changeUser = (text) => {
         setUserValue(text)
-        if (text?.length < 2) { 
+        if (text?.length < 2) {
             setShowMessageUser(true)
         } else {
             setShowMessageUser(false)
@@ -36,42 +36,44 @@ const Login = ({navigation}) => {
             changeUser(userValue)
             changePassword(passwordValue)
         }
-        
+
     }
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.inputContainer}>
-                <Input 
+                <Input
                     onChangeText={changeUser}
                     value={userValue}
                     placeholder="E-mail ou Usúario"
                     showMessage={showMessageUser}
                     message="Usuário deve conter no mínimo 2 caracteres"
                 />
-                <Input 
+                <Input
                     onChangeText={changePassword}
                     value={passwordValue}
-                    placeholder="Senha" 
-                    senha = {true}
+                    placeholder="Senha"
+                    senha={true}
                     showMessage={showMessagePassword}
                     message="Senha deve conter no mínimo 6 caracteres"
                 />
-                <Submit onPress={comfirmLogin} />
+                <Submit 
+                    onPress={comfirmLogin} 
+                />
             </View>
         </SafeAreaView>
     )
 }
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#072433',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#000',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     inputContainer: {
         gap: 24
     }
-  });
+});
 
 export default Login;

@@ -9,13 +9,13 @@ const Input = ({onChangeText, value, placeholder, senha = false, showMessage = f
                 onChangeText={onChangeText}
                 value={value}
                 placeholder={placeholder}
-                placeholderTextColor='#fff'
+                placeholderTextColor='#000'
                 secureTextEntry = {senha}
             />
             {
                 showMessage ? (
-                    <View>
-                        <Text style={style.text}>{message}</Text>
+                    <View style={{paddingLeft: 8}}>
+                        <Text style={{color: 'red'}}>{message}</Text>
                     </View>
                 ): <></>
             }
@@ -26,18 +26,18 @@ const Input = ({onChangeText, value, placeholder, senha = false, showMessage = f
 
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#072433',
+        backgroundColor: '#fff',
         width: 350,
         height: 50,
         fontSize: 18,
         borderWidth: 2,
-        borderColor: '#fff',
+        borderColor: '#000',
         borderRadius: 8,
         padding: 10,
-        color: '#fff'
+        color: '#000'
     },
     text: {
-        color: 'red',
+        color: '#41999c',
         padding: 8
     }
 })

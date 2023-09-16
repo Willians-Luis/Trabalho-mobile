@@ -1,22 +1,23 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const BtnPages = ({title, onPress, btnStatus = true}) => {
-
+const BtnPages = ({title, onPress, disabled = false, borderWidth = 2}) => {
+    const btnStatus = 0
     const styles = StyleSheet.create({
         container: {
-            borderWidth: 2,
+            borderWidth: borderWidth,
             borderRadius: 8,
-            borderColor: btnStatus ? '#fff' : '#000',
+            borderColor: disabled ? '#000' : '#fff',
             padding: 4,
         },
         text: {
             fontSize: 20,
-            color: btnStatus ? '#fff' : '#000'
+            fontWeight: 'bold',
+            color: disabled ? '#000' : '#fff'
         }
     })
     
     return(
-        <TouchableOpacity onPress={onPress} activeOpacity={btnStatus ? 0 : 1 }>
+        <TouchableOpacity onPress={onPress} disabled={disabled}>
             <View style={styles.container}>
                 <Text style={styles.text}>{title}</Text>
             </View>

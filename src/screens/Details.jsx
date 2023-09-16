@@ -1,4 +1,5 @@
 import { Image, SafeAreaView, Text, View, StyleSheet, ScrollView } from "react-native";
+import Header from "../components/Header";
 
 const Details = ({route, navigation}) => {
 
@@ -14,6 +15,7 @@ const Details = ({route, navigation}) => {
 
     return (
         <SafeAreaView style={Styles.container}>
+            <Header title="Detalhes" bgColor="#151c26"/>
             <ScrollView style={Styles.scrollContainer}>
                 <TextContainer text={card.name} />
                 <View style={Styles.imageContainer}>

@@ -12,7 +12,7 @@ const Submit = ({onPress}) => {
 
 const style = StyleSheet.create({
     container: {
-        backgroundColor: '#04161f',
+        backgroundColor: '#000',
         width: 350,
         height: 50,
         borderWidth: 2,

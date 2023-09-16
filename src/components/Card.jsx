@@ -20,7 +20,7 @@ const Card = ({name, type, image, onPress}) => {
                         source={{uri: image}}
                     />
                 </View>
-                <Btn title="Exibir Detalhes" onPress={onPress} />
+                <Btn title="EXIBIR DETALHES" onPress={onPress} />
             </View>
         </View>
     );
